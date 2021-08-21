@@ -2,11 +2,9 @@ package ru.job4j.collection.list;
 
 import org.hamcrest.core.Is;
 import org.junit.Test;
-import ru.job4j.collection.SimpleArray;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
