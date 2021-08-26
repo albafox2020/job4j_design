@@ -5,6 +5,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.util.Objects.hash;
+
 public class User {
     private String name;
     private int children;
@@ -27,7 +29,7 @@ public class User {
         for (Map.Entry<User, Object> pair : map.entrySet()) {
             User key = pair.getKey();
             Object value = pair.getValue();
-            System.out.println(key + ":" + value);
+            System.out.println(key + ":" + value + " hashCode: " + hash(key.hashCode()));
         }
     }
 }
