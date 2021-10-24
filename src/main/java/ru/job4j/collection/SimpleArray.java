@@ -1,29 +1,33 @@
 package ru.job4j.collection;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
-public class SimpleArray<T> implements Iterable<T> {
+public class SimpleArray<T> implements Iterable<Object> {
     transient Object[] container = new Object[3];
     private int size = 0;
     private int modCount = 0;
 
-    public T get(int index) {
+    public Object get(int index) {
         Objects.checkIndex(index, size);
-        return (T) container[index];
+        return container[index];
     }
 
     public void add(T model) {
         if (size == container.length) {
-            container = Arrays.copyOf(container, container.length*2);
+            container = Arrays.copyOf(container, container.length * 2);
         }
         container[size++] = model;
         modCount++;
     }
 
     @Override
-    public Iterator<T> iterator() {
+    public Iterator<Object> iterator() {
 
-        return new Iterator<T>() {
+        return new Iterator<>() {
             int index = 0;
             int expectedModCount = modCount;
 
@@ -33,13 +37,13 @@ public class SimpleArray<T> implements Iterable<T> {
             }
 
             @Override
-            public T next() {
+            public Object next() {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 } else if (modCount != expectedModCount) {
                     throw new ConcurrentModificationException();
                 }
-                return (T) container[index++];
+                return container[index++];
             }
         };
     }
