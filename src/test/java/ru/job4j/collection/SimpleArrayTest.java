@@ -15,7 +15,7 @@ public class SimpleArrayTest {
     public void whenAddThenGet() {
         SimpleArray<String> array = new SimpleArray<>();
         array.add("first");
-        String rsl = array.get(0);
+        String rsl = (String) array.get(0);
         assertThat(rsl, is("first"));
     }
 
@@ -26,7 +26,7 @@ public class SimpleArrayTest {
         array.add("second");
         array.add("third");
         array.add("fourth");
-        String rsl = array.get(3);
+        String rsl = (String) array.get(3);
         assertThat(rsl, is("fourth"));
     }
 
@@ -42,7 +42,7 @@ public class SimpleArrayTest {
         array.add("seventh");
         array.add("eighth");
         array.add("ninth");
-        String rsl = array.get(8);
+        String rsl = (String) array.get(8);
         assertThat(rsl, is("ninth"));
     }
 
@@ -50,7 +50,7 @@ public class SimpleArrayTest {
     public void whenAddThenIt() {
         SimpleArray<String> array = new SimpleArray<>();
         array.add("first");
-        String rsl = array.iterator().next();
+        String rsl = (String) array.iterator().next();
         assertThat(rsl, is("first"));
     }
 
@@ -77,7 +77,7 @@ public class SimpleArrayTest {
     public void whenCorruptedIt() {
         SimpleArray<String> array = new SimpleArray<>();
         array.add("first");
-        Iterator<String> it = array.iterator();
+        Iterator<Object> it = array.iterator();
         array.add("second");
         it.next();
     }

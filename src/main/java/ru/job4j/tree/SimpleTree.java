@@ -13,10 +13,9 @@ public class SimpleTree<E> implements Tree<E> {
     @Override
     public boolean add(E parent, E child) {
         Optional<Node<E>> parentNode = findBy(parent);
-        if (parentNode.isPresent() && findBy(child).isEmpty()) {
-            parentNode.get().children.add(new Node<>(child));
-        }
-        return parentNode.isPresent() && findBy(child).isEmpty() ? true : false;
+        boolean rsl = parentNode.isPresent() && findBy(child).isEmpty();
+        parentNode.get().children.add(new Node<>(child));
+        return rsl;
     }
 
     public boolean isBinary() {
